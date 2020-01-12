@@ -10,10 +10,11 @@
   },
   "devDependencies": {
     "parcel-bundler": "^1.12.4",
+    "parcel-plugin-bundle-visualiser": "^1.2.0",
+    "styled-components": "^4.4.1",
     "typescript": "^3.7.4"
   },
   "dependencies": {
-    "parcel-plugin-bundle-visualiser": "^1.2.0",
     "react": "^16.12.0",
     "react-dom": "^16.12.0"
   }
