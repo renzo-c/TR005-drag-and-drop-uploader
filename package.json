@@ -6,13 +6,14 @@
   "author": "Renzo Navarro",
   "license": "MIT",
   "scripts": {
-    "dev": "parcel index.html"
+    "dev": "parcel src/index.html"
   },
   "devDependencies": {
     "parcel-bundler": "^1.12.4",
     "typescript": "^3.7.4"
   },
   "dependencies": {
+    "parcel-plugin-bundle-visualiser": "^1.2.0",
     "react": "^16.12.0",
     "react-dom": "^16.12.0"
   }
