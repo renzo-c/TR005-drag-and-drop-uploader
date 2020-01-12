@@ -1,0 +1,15 @@
+{
+  "name": "drag-and-drop-uploader",
+  "version": "1.0.0",
+  "description": "Drag & drop uploader component made from scratch without libraries",
+  "main": "index.js",
+  "author": "Renzo Navarro",
+  "license": "MIT",
+  "scripts": {
+    "dev": "parcel index.html"
+  },
+  "devDependencies": {
+    "parcel-bundler": "^1.12.4",
+    "typescript": "^3.7.4"
+  }
+}
