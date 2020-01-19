@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "jsx": "react"
+    "jsx": "react",
   },
   "include": ["src/**/*"],
   "exclude": [".git", "node_modules"]
