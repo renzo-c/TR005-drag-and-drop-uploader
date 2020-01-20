@@ -1,14 +1,13 @@
 import React from 'react';
-import picture from '../assets/images/image-loader.png';
 import styled from 'styled-components';
 
-const LoaderImage = () => {
+const LoaderImage = ({ image, dragDropTitle }) => {
   return (
     <>
       <ImgContainer>
-        <Img src={picture} alt='' />
+        <Img src={image} alt='' />
       </ImgContainer>
-      <P1>Drag & drop here</P1>
+      <P1>{dragDropTitle}</P1>
       <P2 className='P2'>- or -</P2>
     </>
   );

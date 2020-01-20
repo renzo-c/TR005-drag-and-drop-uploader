@@ -1,12 +1,19 @@
 import React, { useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
-
 import { Header } from './header';
 import { DropArea } from './dropArea';
+
+const CLOUDINARY_URL =
+  'https://api.cloudinary.com/v1_1/nihilist-penguin/image/upload';
+
+const CLOUDINARY_UPLOAD_PRESET = 'yo0wlc3u';
 
 const DragAndDropUploader = () => {
   const dropRef = useRef(null);
   const [highlightBox, setHighlightBox] = useState(false);
+  const [image, setImage] = useState('/image-loader.fbe060da.png');
+  const [dragDropTitle, setDragDropTitle] = useState('Drag & drop here');
+  const [loaderSpinner, setLoaderSpinner] = useState(false);
 
   useEffect(() => {
     let dropArea = dropRef.current;
@@ -38,24 +45,39 @@ const DragAndDropUploader = () => {
     let dt = e.dataTransfer;
     let files = dt.files;
     uploadFile(files[0]);
-  }
+  };
 
-  const uploadFile = (file) => {
-    console.log([file]);
-    let url = "www.site.com";
+  const uploadFile = file => {
+    setLoaderSpinner(true);
     let formData = new FormData();
 
     formData.append('file', file);
-    setTimeout(() => {
-      console.log(formData.get('file'));
-    }, 2200);
-  }
+    formData.append('upload_preset', CLOUDINARY_UPLOAD_PRESET);
 
-  console.log(highlightBox);
+    fetch(CLOUDINARY_URL, {
+      method: 'POST',
+      body: formData
+    })
+      .then(res => res.json())
+      .then(res => {
+        setImage(res.secure_url);
+        setLoaderSpinner(false);
+        setDragDropTitle('Drag & drop here to replace');
+      })
+      .catch(err => console.log('err', err));
+  };
+
   return (
     <UploadContainer highlight={highlightBox}>
       <Header />
-      <DropArea dropRef={dropRef} highlight={highlightBox}/>
+      <DropArea
+        dropRef={dropRef}
+        highlight={highlightBox}
+        image={image}
+        dragDropTitle={dragDropTitle}
+        loaderSpinner={loaderSpinner}
+        uploadFile={uploadFile}
+      />
     </UploadContainer>
   );
 };
