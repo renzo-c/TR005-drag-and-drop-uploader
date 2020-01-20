@@ -2,6 +2,9 @@ import React, { useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
 import { Header } from './header';
 import { DropArea } from './dropArea';
+import axios from 'axios';
+import { isValidFormat } from '../assets/helperFunctions';
+import imageLoader from '../assets/images/image-loader.png';
 
 const CLOUDINARY_URL =
   'https://api.cloudinary.com/v1_1/nihilist-penguin/image/upload';
@@ -11,7 +14,7 @@ const CLOUDINARY_UPLOAD_PRESET = 'yo0wlc3u';
 const DragAndDropUploader = () => {
   const dropRef = useRef(null);
   const [highlightBox, setHighlightBox] = useState(false);
-  const [image, setImage] = useState('/image-loader.fbe060da.png');
+  const [image, setImage] = useState(imageLoader);
   const [dragDropTitle, setDragDropTitle] = useState('Drag & drop here');
   const [loaderSpinner, setLoaderSpinner] = useState(false);
 
@@ -47,6 +50,21 @@ const DragAndDropUploader = () => {
     uploadFile(files[0]);
   };
 
+  const callToAxios = formData => {
+    axios({
+      url: CLOUDINARY_URL,
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+      },
+      data: formData
+    })
+      .then(({ data: { url } }) => {
+        setLoaderSpinner(false);
+        setImage(url);
+      })
+      .catch(err => console.log(err));
+  };
   const uploadFile = file => {
     setLoaderSpinner(true);
     let formData = new FormData();
@@ -54,17 +72,26 @@ const DragAndDropUploader = () => {
     formData.append('file', file);
     formData.append('upload_preset', CLOUDINARY_UPLOAD_PRESET);
 
-    fetch(CLOUDINARY_URL, {
-      method: 'POST',
-      body: formData
-    })
-      .then(res => res.json())
-      .then(res => {
-        setImage(res.secure_url);
-        setLoaderSpinner(false);
-        setDragDropTitle('Drag & drop here to replace');
-      })
-      .catch(err => console.log('err', err));
+    if (!file.type || !isValidFormat(file.type.substring(6))) {
+      alert('Only jpeg and png files are allowed');
+      setLoaderSpinner(false);
+    } else {
+      let image = new Image();
+
+      image.onload = function() {
+        if (image.width >= 100 || image.height >= 100) {
+          alert('Sides should measure less than 100px');
+          setLoaderSpinner(false);
+        } else if (image.width !== image.height) {
+          alert('All sides should length the same');
+          setLoaderSpinner(false);
+        } else {
+          callToAxios(formData);
+        }
+      };
+
+      image.src = window.URL.createObjectURL(file);
+    }
   };
 
   return (

@@ -15,9 +15,12 @@ const DropArea = ({
   useEffect(() => {}, []);
 
   const handleSubmit = file => {
-    uploadFile(file);
+    if (file) {
+      uploadFile(file);
+    }
   };
-  
+  console.log({loaderSpinner});
+
   return (
     <Container ref={dropRef} highlight={highlight}>
       {loaderSpinner ? (
