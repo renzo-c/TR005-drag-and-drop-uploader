@@ -1,5 +1,4 @@
 import React from 'react';
-import logo from '../assets/images/logo.png';
 import styled from 'styled-components';
 
 const Header = () => {
@@ -17,6 +16,11 @@ const Header = () => {
 
 const Container = styled.div`
   margin: auto;
+  @media (min-width: 320px) and (max-width: 768px) {
+    padding-left: 0.5rem;
+    border-top-left-radius: 25%;
+    border-top-right-radius: 25%;
+  }
 `;
 
 const Title = styled.h1`

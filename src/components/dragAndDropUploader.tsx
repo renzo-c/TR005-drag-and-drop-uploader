@@ -114,9 +114,13 @@ const UploadContainer = styled.div`
   flex-direction: column;
   width: 400px;
   height: 590px;
-  border: 1px solid #e8f1fb;
+  border: 3px solid #e8f1fb;
   align-self: center;
   background-color: white;
+  border-radius: 5%;
+  @media (min-width: 320px) and (max-width: 768px) {
+    width: 300px;
+  }
 `;
 
 export { DragAndDropUploader };
