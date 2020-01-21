@@ -7,7 +7,7 @@ const Header = () => {
       <Container style={{ backgroundColor: 'white' }}>
         <Title>Company Logo</Title>
         <Description>
-          Logo should be square, 100px size and in png, jpeg file format.
+          Logo should be square, less than 100px size and in png, jpeg file format.
         </Description>
       </Container>
     </>
