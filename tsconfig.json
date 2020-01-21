@@ -2,6 +2,7 @@
   "compilerOptions": {
     "lib": ["es2017", "dom"],
     "jsx": "react",
+    "typeRoots": [ "../node_modules/@types" ],
   },
   "include": ["src/**/*"],
   "exclude": [".git", "node_modules"]

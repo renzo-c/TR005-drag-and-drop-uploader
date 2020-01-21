@@ -5,11 +5,13 @@ import { DropArea } from './dropArea';
 import axios from 'axios';
 import { isValidFormat } from '../assets/helperFunctions';
 import imageLoader from '../assets/images/image-loader.png';
+import * as dotenv from 'dotenv';
 
-const CLOUDINARY_URL =
-  'https://api.cloudinary.com/v1_1/nihilist-penguin/image/upload';
+dotenv.config();
 
-const CLOUDINARY_UPLOAD_PRESET = 'yo0wlc3u';
+const CLOUDINARY_URL = process.env.CLOUDINARY_URL;
+
+const CLOUDINARY_UPLOAD_PRESET = process.env.CLOUDINARY_UPLOAD_PRESET;
 
 const DragAndDropUploader = () => {
   const dropRef = useRef(null);
@@ -93,7 +95,7 @@ const DragAndDropUploader = () => {
       image.src = window.URL.createObjectURL(file);
     }
   };
-
+console.log("process.env.CLOUDINARY_URL", process.env.CLOUDINARY_URL);
   return (
     <UploadContainer highlight={highlightBox}>
       <Header />
@@ -108,7 +110,7 @@ const DragAndDropUploader = () => {
     </UploadContainer>
   );
 };
-
+console.log('process.env', process.env);
 const UploadContainer = styled.div`
   display: flex;
   flex-direction: column;

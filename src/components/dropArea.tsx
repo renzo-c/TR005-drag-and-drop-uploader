@@ -20,7 +20,6 @@ const DropArea = ({
       uploadFile(file);
     }
   };
-  console.log({ loaderSpinner });
 
   return (
     <Container ref={dropRef} highlight={highlight}>
