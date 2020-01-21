@@ -95,7 +95,7 @@ const DragAndDropUploader = () => {
       image.src = window.URL.createObjectURL(file);
     }
   };
-console.log("process.env.CLOUDINARY_URL", process.env.CLOUDINARY_URL);
+
   return (
     <UploadContainer highlight={highlightBox}>
       <Header />
@@ -110,7 +110,7 @@ console.log("process.env.CLOUDINARY_URL", process.env.CLOUDINARY_URL);
     </UploadContainer>
   );
 };
-console.log('process.env', process.env);
+
 const UploadContainer = styled.div`
   display: flex;
   flex-direction: column;
