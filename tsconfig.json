@@ -3,12 +3,7 @@
     "lib": ["es2017", "dom"],
     "jsx": "react",
     "typeRoots": ["../node_modules/@types"],
-    "module": "commonjs",
-    "sourceMap": true,
-    "strict": true,
-    "target": "es5",
-    "types": [],
-    "esModuleInterop": true
+    "module": "commonjs"
   },
   "include": ["src/**/*"],
   "exclude": [".git", "node_modules"]

@@ -6,7 +6,8 @@
   "author": "Renzo Navarro",
   "license": "MIT",
   "scripts": {
-    "dev": "parcel src/index.html"
+    "dev": "parcel src/index.html",
+    "start": "node ./server.js"
   },
   "devDependencies": {
     "@babel/core": "^7.8.3",
@@ -21,6 +22,7 @@
     "@types/node": "^13.1.8",
     "axios": "^0.19.1",
     "cloudinary": "^1.18.1",
+    "express": "^4.17.1",
     "react": "^16.12.0",
     "react-dom": "^16.12.0"
   }
