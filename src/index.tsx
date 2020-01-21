@@ -3,9 +3,11 @@ import ReactDOM from 'react-dom';
 
 import { createGlobalStyle } from 'styled-components';
 import { DragAndDropUploader } from './components/dragAndDropUploader';
+import DownloadBox from './components/downloadBox';
 
 const App = () => (
   <>
+    <DownloadBox />
     <GlobalStyle />
     <DragAndDropUploader />
   </>
