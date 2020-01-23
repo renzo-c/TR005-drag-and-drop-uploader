@@ -9,7 +9,7 @@ const DownloadBox = () => {
       <p>
         Download{' '}
         <a href={testFiles} download>
-          THIS
+          THESE
         </a>
         {' '}files and test the different validations :)
       </p>
